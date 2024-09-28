@@ -1,7 +1,7 @@
 """
-Student Name: Dan Shaw w0190983
-Program Name: Hipster's Local Vinyl Records
-Program Description: Hipster's Local Vinyl Records sell and hand-deliver vinyl records to their customers.
+    Student Name: Dan Shaw w0190983
+    Program Name: Hipster's Local Vinyl Records
+    Program Description: Hipster's Local Vinyl Records sell and hand-deliver vinyl records to their customers.
 """
 
 RATE_PER_KM = 15
@@ -21,20 +21,12 @@ def main():
     customerName = input("Enter the name of the customer: ")
 
     # Get travel distance from user, validate it as a number
-    deliveryDistance = getDeliveryDistance()
-    while validateFloat(deliveryDistance) == 0:
-        deliveryDistance = getDeliveryDistance()
-    
-    # Once deliveryDistance has been validated as a number, convert it to a float
-    deliveryDistance = float(deliveryDistance)
+    while (deliveryDistance := validateFloat(input("Enter the delivery distance in kilometres: "))) == 0:
+        pass
 
     # Get sub-total of bill (record prices only), validate it as a number
-    billSubtotal = getBillSubtotal()
-    while validateFloat(billSubtotal) == 0:
-        billSubtotal = getBillSubtotal()
-
-    # Once billSubtotal has been validated as a number, convert it to a float
-    billSubtotal = float(billSubtotal)
+    while (billSubtotal := validateFloat(input("Enter the cost of the records, excluding tip and tax: "))) == 0:
+        pass
 
     # Perform calculations
     deliveryCost = RATE_PER_KM * deliveryDistance
@@ -46,23 +38,17 @@ def main():
     print("-" * len(greeting))
     print("""Summary of purchase for bill in the name of: {0}
         Delivery Cost: ${1:.2f} for {2:.1f} kilometres
-        Purchase Cost: ${3:.2f}
+        Cost of Records: ${3:.2f}
         Tax Rate: {4:.1f}%
-        Subtotal: ${5:.2f}
-        Total Charge: ${6:.2f}""".format(customerName, deliveryCost, deliveryDistance, billSubtotal, TAX_RATE * 100, billSubtotal + taxCost, billTotal))
+        Subtotal (tax included): ${5:.2f}
+        Total Charge (delivery included): ${6:.2f}""".format(customerName, deliveryCost, deliveryDistance, billSubtotal, TAX_RATE * 100, billSubtotal + taxCost, billTotal))
     print("-" * len(greeting))
 
-def getDeliveryDistance():
-    return input("Enter the delivery distance in Kilometres: ")
-
-def getBillSubtotal():
-    return input("Enter the cost of records purchased: ")
-
 # Validates whether inputQuery is a valid number by trying to convert to a float
+# Returns 1 if a valid float, 0 if not
 def validateFloat(inputQuery):
     try:
-        float(inputQuery)
-        return 1
+        return float(inputQuery)
     except:
         errorString = "Please enter a valid number"
         print("-" * len(errorString))
