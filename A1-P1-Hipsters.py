@@ -21,11 +21,11 @@ def main():
     customerName = input("Enter the name of the customer: ")
 
     # Get travel distance from user, validate it as a number
-    while (deliveryDistance := validateFloat(input("Enter the delivery distance in kilometres: "))) == 0:
+    while (deliveryDistance := validateFloat(input("Enter the delivery distance in kilometres: "))) == None:
         pass
 
     # Get sub-total of bill (record prices only), validate it as a number
-    while (billSubtotal := validateFloat(input("Enter the cost of the records, excluding tip and tax: "))) == 0:
+    while (billSubtotal := validateFloat(input("Enter the cost of the records, excluding tip and tax: "))) == None:
         pass
 
     # Perform calculations
@@ -54,7 +54,7 @@ def validateFloat(inputQuery):
         print("-" * len(errorString))
         print(errorString)
         print("-" * len(errorString))
-        return 0
+        return None
 
 if __name__ == "__main__":
     main()
