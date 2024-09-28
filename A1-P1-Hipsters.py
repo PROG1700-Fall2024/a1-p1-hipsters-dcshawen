@@ -45,7 +45,7 @@ def main():
     print("-" * len(greeting))
 
 # Validates whether inputQuery is a valid number by trying to convert to a float
-# Returns 1 if a valid float, 0 if not
+# Returns the converted float if successfull and None if fails
 def validateFloat(inputQuery):
     try:
         return float(inputQuery)
