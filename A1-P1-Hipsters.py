@@ -21,6 +21,8 @@ def main():
     customerName = input("Enter the name of the customer: ")
 
     # Get travel distance from user, validate it as a number
+    # As long as validateFloat() returns None, the while loop will never end and the user will be continuously prompted for a float value
+    # Once a float value is entered, while loop ends and program continues
     while (deliveryDistance := validateFloat(input("Enter the delivery distance in kilometres: "))) == None:
         pass
 
